@@ -14,7 +14,6 @@ public class GuiUpdater {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
-
     }
 
     public void updateTime(LocalTime startTime) {

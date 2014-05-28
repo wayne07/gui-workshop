@@ -1,4 +1,4 @@
-package de.idos.chronos;
+package de.idos.chronos.swing;
 
 import javax.swing.JLabel;
 

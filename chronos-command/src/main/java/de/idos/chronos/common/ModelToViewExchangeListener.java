@@ -1,8 +1,9 @@
-package de.idos.chronos;
+package de.idos.chronos.common;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import de.idos.chronos.swing.ChronosGui;
 
 public class ModelToViewExchangeListener implements ChangeListener {
 

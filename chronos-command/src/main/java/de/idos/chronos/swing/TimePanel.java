@@ -1,4 +1,4 @@
-package de.idos.chronos;
+package de.idos.chronos.swing;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-class TimePanel {
+public class TimePanel {
 
     private final JLabel separator1 = new JLabel(":");
     private final JLabel separator2 = new JLabel(":");

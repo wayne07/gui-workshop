@@ -1,4 +1,4 @@
-package de.idos.chronos;
+package de.idos.chronos.common;
 
 import java.util.ArrayList;
 import java.util.List;

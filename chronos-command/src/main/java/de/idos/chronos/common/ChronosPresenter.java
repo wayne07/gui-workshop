@@ -1,4 +1,4 @@
-package de.idos.chronos;
+package de.idos.chronos.common;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -6,6 +6,8 @@ import java.util.TimerTask;
 import javax.swing.event.ChangeListener;
 
 import org.joda.time.DateTime;
+
+import de.idos.chronos.swing.ChronosGui;
 
 public class ChronosPresenter {
 

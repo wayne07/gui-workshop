@@ -1,4 +1,4 @@
-package de.idos.chronos;
+package de.idos.chronos.swing;
 
 import java.util.Date;
 
@@ -8,6 +8,9 @@ import javax.swing.WindowConstants;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+
+import de.idos.chronos.common.ChronosModel;
+import de.idos.chronos.common.ChronosPresenter;
 
 
 public class ChronosStarter {

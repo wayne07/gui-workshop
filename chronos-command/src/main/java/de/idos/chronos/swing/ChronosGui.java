@@ -1,4 +1,4 @@
-package de.idos.chronos;
+package de.idos.chronos.swing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-class ChronosGui {
+public class ChronosGui {
 
     private final JPanel panel = new JPanel();
 
@@ -19,6 +19,7 @@ class ChronosGui {
         panels.add(new TimePanel("", DateTimeZone.forID("Europe/Athens")));
         panels.add(new TimePanel("Frankfurt", DateTimeZone.forID("Europe/Berlin")));
         panels.add(new TimePanel("Tokyo", DateTimeZone.forID("Asia/Tokyo")));
+        panels.add(new TimePanel("New York", DateTimeZone.forID("America/New_York")));
         panels.add(new TimePanel("New York", DateTimeZone.forID("America/New_York")));
 
         for (TimePanel singlePanel : panels) {

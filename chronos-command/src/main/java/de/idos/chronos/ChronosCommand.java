@@ -1,9 +1,8 @@
 package de.idos.chronos;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+import java.util.TimeZone;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -24,14 +23,10 @@ public class ChronosCommand {
         Long mylong = new Long(args[0]);
         Date date = new Date(mylong);
 
-        int dateStyle = SimpleDateFormat.LONG;
-        int timeStyle = SimpleDateFormat.LONG;
-        Locale aLocale = new Locale("GR");
+        SimpleDateFormat isoFormat = new SimpleDateFormat("HH:mm:ss");
+        isoFormat.setTimeZone(TimeZone.getTimeZone("Europe/Athens"));
 
-        DateFormat dateFormat = SimpleDateFormat.getDateTimeInstance(dateStyle, timeStyle, aLocale);
-
-
-        System.out.println("Da hasch Dei Zeit: " + dateFormat.format(date));
+        System.out.println("Da hasch Dei Zeit: " + isoFormat.format(date));
     }
 
 }

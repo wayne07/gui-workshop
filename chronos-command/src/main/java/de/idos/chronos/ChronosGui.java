@@ -3,6 +3,8 @@ package de.idos.chronos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -19,6 +21,10 @@ import org.joda.time.LocalTime;
 
 public class ChronosGui {
 
+    private final JLabel hour = new JLabel();
+    private final JLabel minute = new JLabel();
+    private final JLabel second = new JLabel();
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Ich brauche die millis seit 1970, z.B. " + new Date().getTime());
@@ -34,23 +40,15 @@ public class ChronosGui {
 
             public void run() {
                 createAndShowGUI(createContent(startTime.toLocalTime()));
+                startTimer(startTime);
             }
         });
     }
 
-    private JPanel createContent(LocalTime startTime) {
+    private JPanel createContent(final LocalTime startTime) {
         JLabel label = new JLabel("Uhrzeit: ");
 
-        JLabel hour = new JLabel("" + startTime.getHourOfDay());
-        JLabel minute = new JLabel("" + startTime.getMinuteOfHour());
-        JLabel second = new JLabel("" + startTime.getSecondOfMinute());
-
-        //        final JTextField textField = new JTextField();
-        //        textField.setPreferredSize(new Dimension(160, 25));
-        //        final JButton button = new JButton("press me");
-
-        //        listenToButtonPressAndRespond(textField, button);
-        //        listenToTextInputAndUpdateButtonText(textField, button);
+        updateTime(startTime);
 
         final JPanel panel = new JPanel();
         panel.add(label);
@@ -58,6 +56,28 @@ public class ChronosGui {
         panel.add(minute);
         panel.add(second);
         return panel;
+    }
+
+    private void startTimer(final DateTime dateTime) {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+
+            DateTime nextDateTime = dateTime;
+
+            @Override
+            public void run() {
+                nextDateTime = nextDateTime.plusSeconds(1);
+                updateTime(nextDateTime.toLocalTime());
+            }
+        };
+        long delayInMillis = 1000l;
+        timer.schedule(timerTask, dateTime.toDate(), delayInMillis);
+    }
+
+    private void updateTime(LocalTime startTime) {
+        hour.setText("" + startTime.getHourOfDay());
+        minute.setText("" + startTime.getMinuteOfHour());
+        second.setText("" + startTime.getSecondOfMinute());
     }
 
     private void listenToButtonPressAndRespond(final JTextField textField, JButton button) {

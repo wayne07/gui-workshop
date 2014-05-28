@@ -7,7 +7,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.joda.time.LocalTime;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 class ChronosGui {
 
@@ -16,10 +17,10 @@ class ChronosGui {
     private final List<TimePanel> panels = new ArrayList<TimePanel>();
 
     public ChronosGui() {
-        panels.add(new TimePanel(""));
-        panels.add(new TimePanel("Frankfurt"));
-        panels.add(new TimePanel("Tokio"));
-        panels.add(new TimePanel("New York"));
+        panels.add(new TimePanel("", DateTimeZone.forID("Europe/Athens")));
+        panels.add(new TimePanel("Frankfurt", DateTimeZone.forID("Europe/Berlin")));
+        panels.add(new TimePanel("Tokyo", DateTimeZone.forID("Asia/Tokyo")));
+        panels.add(new TimePanel("New York", DateTimeZone.forID("America/New_York")));
 
         for (TimePanel singlePanel : panels) {
             panel.add(singlePanel.getComponent());
@@ -35,10 +36,11 @@ class ChronosGui {
         private final JLabel second = new JLabel();
 
         private final JPanel panel = new JPanel();
-        private final GuiUpdater update = new GuiUpdater(hour, minute, second);
+        private final GuiUpdater updater;
 
-        public TimePanel(String name) {
+        public TimePanel(String name, DateTimeZone timeZone) {
             createPanelWithTime(name);
+            updater = new GuiUpdater(hour, minute, second, timeZone);
         }
 
         public JPanel createPanelWithTime(String name) {
@@ -60,8 +62,8 @@ class ChronosGui {
             return panel;
         }
 
-        public void setTime(LocalTime time) {
-            update.updateTime(time);
+        public void setTime(DateTime time) {
+            updater.updateTime(time);
         }
 
     }
@@ -71,7 +73,7 @@ class ChronosGui {
         return panel;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(DateTime time) {
         for (TimePanel panel : panels) {
             panel.setTime(time);
         }

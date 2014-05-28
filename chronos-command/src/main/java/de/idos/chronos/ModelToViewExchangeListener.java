@@ -15,7 +15,7 @@ public class ModelToViewExchangeListener implements ChangeListener {
     }
 
     public void stateChanged(ChangeEvent e) {
-        view.setTime(model.getDateTime().toLocalTime());
+        view.setTime(model.getDateTime());
     }
 
 }

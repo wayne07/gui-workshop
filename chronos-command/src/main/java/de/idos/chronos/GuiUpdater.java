@@ -2,24 +2,28 @@ package de.idos.chronos;
 
 import javax.swing.JLabel;
 
-import org.joda.time.LocalTime;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 public class GuiUpdater {
 
     private final JLabel hour;
     private final JLabel minute;
     private final JLabel second;
+    private final DateTimeZone timeZone;
 
-    public GuiUpdater(JLabel hour, JLabel minute, JLabel second) {
+    public GuiUpdater(JLabel hour, JLabel minute, JLabel second, DateTimeZone timeZone) {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+        this.timeZone = timeZone;
     }
 
-    public void updateTime(LocalTime startTime) {
-        hour.setText(format(startTime.getHourOfDay()));
-        minute.setText(format(startTime.getMinuteOfHour()));
-        second.setText(format(startTime.getSecondOfMinute()));
+    public void updateTime(DateTime dateTime) {
+        DateTime withZone = dateTime.withZone(timeZone);
+        hour.setText(format(withZone.getHourOfDay()));
+        minute.setText(format(withZone.getMinuteOfHour()));
+        second.setText(format(withZone.getSecondOfMinute()));
     }
 
     private String format(int anyInteger) {

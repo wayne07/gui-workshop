@@ -54,8 +54,8 @@ public class ChronosStarter {
         panel.add(hour);
         panel.add(separator1);
         panel.add(minute);
-        panel.add(separator2);
-        panel.add(second);
+        //        panel.add(separator2);
+        //        panel.add(second);
         return panel;
     }
 

@@ -4,7 +4,7 @@ import java.util.TimerTask;
 
 import org.joda.time.DateTime;
 
-class ChronosTimerTask extends TimerTask {
+public class ChronosTimerTask extends TimerTask {
 
     private final GuiUpdater guiUpdater;
     private DateTime nextDateTime;

@@ -4,13 +4,13 @@ import javax.swing.JLabel;
 
 import org.joda.time.LocalTime;
 
-class GuiUpdater {
+public class GuiUpdater {
 
     private final JLabel hour;
     private final JLabel minute;
     private final JLabel second;
 
-    GuiUpdater(JLabel hour, JLabel minute, JLabel second) {
+    public GuiUpdater(JLabel hour, JLabel minute, JLabel second) {
         this.hour = hour;
         this.minute = minute;
         this.second = second;

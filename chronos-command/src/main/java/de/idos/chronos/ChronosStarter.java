@@ -31,12 +31,12 @@ public class ChronosStarter {
 
                 new ChronosPresenter(chronosGui, model).refreshPeridic();
 
-                createAndShowGUI(chronosGui.getComponent());
+                showGUI(chronosGui.getComponent());
             }
         });
     }
 
-    private void createAndShowGUI(JComponent display) {
+    private void showGUI(JComponent display) {
         JFrame frame = new JFrame("application name");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(display);

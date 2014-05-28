@@ -21,6 +21,8 @@ import org.joda.time.LocalTime;
 
 public class ChronosGui {
 
+    private final JLabel separator1 = new JLabel(":");
+    private final JLabel separator2 = new JLabel(":");
     private final JLabel hour = new JLabel();
     private final JLabel minute = new JLabel();
     private final JLabel second = new JLabel();
@@ -53,7 +55,9 @@ public class ChronosGui {
         final JPanel panel = new JPanel();
         panel.add(label);
         panel.add(hour);
+        panel.add(separator1);
         panel.add(minute);
+        panel.add(separator2);
         panel.add(second);
         return panel;
     }
@@ -75,9 +79,16 @@ public class ChronosGui {
     }
 
     private void updateTime(LocalTime startTime) {
-        hour.setText("" + startTime.getHourOfDay());
-        minute.setText("" + startTime.getMinuteOfHour());
-        second.setText("" + startTime.getSecondOfMinute());
+        hour.setText(format(startTime.getHourOfDay()));
+        minute.setText(format(startTime.getMinuteOfHour()));
+        second.setText(format(startTime.getSecondOfMinute()));
+    }
+
+    private String format(int anyInteger) {
+        if (anyInteger < 10) {
+            return "0" + anyInteger;
+        }
+        return "" + anyInteger;
     }
 
     private void listenToButtonPressAndRespond(final JTextField textField, JButton button) {

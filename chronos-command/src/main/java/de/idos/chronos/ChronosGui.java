@@ -1,17 +1,13 @@
 package de.idos.chronos;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import org.joda.time.DateTime;
@@ -89,24 +85,6 @@ public class ChronosGui {
             return "0" + anyInteger;
         }
         return "" + anyInteger;
-    }
-
-    private void listenToButtonPressAndRespond(final JTextField textField, JButton button) {
-        button.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                textField.setText("Ouch, not so hard...");
-            }
-        });
-    }
-
-    private void listenToTextInputAndUpdateButtonText(final JTextField textField, final JButton button) {
-        textField.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                button.setText(textField.getText());
-            }
-        });
     }
 
     private void createAndShowGUI(JComponent display) {

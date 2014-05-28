@@ -2,7 +2,6 @@ package de.idos.chronos;
 
 import java.util.Date;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -15,7 +14,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.LocalTime;
 
 
-public class ChronosGui {
+public class ChronosStarter {
 
     private final JLabel separator1 = new JLabel(":");
     private final JLabel separator2 = new JLabel(":");
@@ -23,11 +22,13 @@ public class ChronosGui {
     private final JLabel minute = new JLabel();
     private final JLabel second = new JLabel();
 
+    private GuiUpdater guiUpdater;
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Ich brauche die millis seit 1970, z.B. " + new Date().getTime());
         }
-        new ChronosGui().start(args);
+        new ChronosStarter().start(args);
     }
 
     private void start(String[] args) {
@@ -46,7 +47,7 @@ public class ChronosGui {
     private JPanel createContent(final LocalTime startTime) {
         JLabel label = new JLabel("Uhrzeit: ");
 
-        updateTime(startTime);
+        guiUpdater = new GuiUpdater(hour, minute, second);
 
         final JPanel panel = new JPanel();
         panel.add(label);
@@ -58,40 +59,20 @@ public class ChronosGui {
         return panel;
     }
 
-    private void startTimer(final DateTime dateTime) {
+    private void startTimer(final DateTime startDateTime) {
         Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-
-            DateTime nextDateTime = dateTime;
-
-            @Override
-            public void run() {
-                nextDateTime = nextDateTime.plusSeconds(1);
-                updateTime(nextDateTime.toLocalTime());
-            }
-        };
+        ChronosTimerTask timerTask = new ChronosTimerTask(guiUpdater, startDateTime);
         long delayInMillis = 1000l;
-        timer.schedule(timerTask, dateTime.toDate(), delayInMillis);
+        timer.schedule(timerTask, startDateTime.toDate(), delayInMillis);
     }
 
-    private void updateTime(LocalTime startTime) {
-        hour.setText(format(startTime.getHourOfDay()));
-        minute.setText(format(startTime.getMinuteOfHour()));
-        second.setText(format(startTime.getSecondOfMinute()));
-    }
-
-    private String format(int anyInteger) {
-        if (anyInteger < 10) {
-            return "0" + anyInteger;
-        }
-        return "" + anyInteger;
-    }
 
     private void createAndShowGUI(JComponent display) {
         JFrame frame = new JFrame("application name");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(display);
         frame.pack();
+        frame.setSize(400, 200);
         frame.setVisible(true);
     }
 

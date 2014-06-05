@@ -2,6 +2,7 @@ package de.idos.chronos.common;
 
 import java.util.Date;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import org.joda.time.DateTimeZone;
 
@@ -29,9 +30,9 @@ public class ChronosPresenter {
         timeModel.addDataChangeListener(listener);
     }
 
-    public void refreshPeriodic() {
+    public void refreshPeriodic(TimerTask timerTask) {
         Date startTime = timeModel.getDateTime().toDate();
-        new Timer().schedule(new ChronosTimerTask(timeModel), startTime, delayInMillis);
+        new Timer().schedule(timerTask, startTime, delayInMillis);
     }
 
 }

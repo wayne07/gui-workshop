@@ -46,7 +46,7 @@ public class JavaFxLauncher extends Application {
         ChronosModel model = new ChronosModel(dateTimeInUTC);
         GuiBuilder guiBuilder = new FxGuiBuilder();
 
-        new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic();
+        new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic(new FxTimerTask(model));
 
         return chronosGui.getComponent();
     }

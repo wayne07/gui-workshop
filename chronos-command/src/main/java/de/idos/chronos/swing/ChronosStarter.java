@@ -29,7 +29,7 @@ public class ChronosStarter {
                 ChronosModel model = new ChronosModel(dateTimeInUTC);
                 GuiBuilder guiBuilder = new SwingGuiBuilder();
 
-                new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic();
+                new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic(new SwingTimerTask(model));
 
                 showGUI(chronosGui.getComponent());
             }

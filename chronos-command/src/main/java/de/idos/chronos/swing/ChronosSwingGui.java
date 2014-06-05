@@ -1,5 +1,6 @@
 package de.idos.chronos.swing;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ChronosSwingGui implements ChronosGui {
 
     public JComponent getComponent() {
         for (ChronosTimeGui singleGui : panels) {
-            panel.add(singleGui.getComponent());
+            panel.add((Component)singleGui.getComponent());
         }
         return panel;
     }

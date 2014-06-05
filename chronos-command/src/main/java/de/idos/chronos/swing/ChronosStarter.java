@@ -14,7 +14,7 @@ import de.idos.chronos.common.GuiBuilder;
 public class ChronosStarter {
 
     public static void main(String[] args) {
-        DateTime dateTimeInUTC = new DateTime();
+        DateTime dateTimeInUTC = new DateTime(DateTimeZone.UTC);
         if (args.length > 0) {
             dateTimeInUTC = new DateTime(Long.parseLong(args[0]), DateTimeZone.UTC);
         }
@@ -43,7 +43,7 @@ public class ChronosStarter {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(display);
         frame.pack();
-        frame.setSize(400, 200);
+        frame.setSize(350, 200);
         frame.setVisible(true);
     }
 

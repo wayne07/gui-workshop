@@ -8,21 +8,18 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import de.idos.chronos.common.ChronosTimeGui;
+import de.idos.chronos.common.format.ChronosFormatter;
 
 public class TimePanel implements ChronosTimeGui {
 
-    private final JLabel separator1 = new JLabel(":");
-    private final JLabel separator2 = new JLabel(":");
-    private final JLabel hour = new JLabel();
-    private final JLabel minute = new JLabel();
-    private final JLabel second = new JLabel();
-
+    private final JLabel lblTime = new JLabel();
     private final JPanel panel = new JPanel();
-    private final GuiUpdater updater;
 
-    public TimePanel(String name, DateTimeZone timeZone) {
+    private final ChronosFormatter formatter;
+
+    public TimePanel(String name, DateTimeZone timeZone, ChronosFormatter chronosFormatter) {
+        this.formatter = chronosFormatter;
         createPanelWithTime(name);
-        updater = new GuiUpdater(hour, minute, second, timeZone);
     }
 
     public JPanel createPanelWithTime(String name) {
@@ -32,11 +29,7 @@ public class TimePanel implements ChronosTimeGui {
         }
 
         panel.add(label);
-        panel.add(hour);
-        panel.add(separator1);
-        panel.add(minute);
-        panel.add(separator2);
-        panel.add(second);
+        panel.add(lblTime);
         return panel;
     }
 
@@ -45,7 +38,7 @@ public class TimePanel implements ChronosTimeGui {
     }
 
     public void setTime(DateTime time) {
-        updater.updateTime(time);
+        lblTime.setText(formatter.format(time));
     }
 
 }

@@ -49,18 +49,6 @@ public class JavaFxLauncher extends Application {
         new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic();
 
         return chronosGui.getComponent();
-
-
-        //        Label label = new Label("hello world");
-        //        final TextField textField = new TextField();
-        //        final Button button = new Button("press me");
-        //
-        //        HBox hBox = new HBox();
-        //        hBox.getChildren().add(label);
-        //        hBox.getChildren().add(button);
-        //        hBox.getChildren().add(textField);
-        //
-        //        return hBox;
     }
 
     @Override

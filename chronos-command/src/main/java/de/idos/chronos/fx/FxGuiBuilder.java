@@ -7,7 +7,7 @@ import de.idos.chronos.common.format.ChronosFormatter;
 public class FxGuiBuilder implements GuiBuilder {
 
     public ChronosTimeGui buildTimeGui(String guiName, ChronosFormatter chronosFormatter) {
-        return null;
+        return new TimeFxGui(guiName, chronosFormatter);
     }
 
 }

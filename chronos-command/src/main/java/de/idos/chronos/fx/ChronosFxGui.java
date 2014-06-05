@@ -14,7 +14,8 @@ public class ChronosFxGui implements ChronosGui {
     }
 
     public Pane getComponent() {
-        return null;
+        Pane canvas = new Pane();
+        return canvas;
     }
 
     public void addTimeGui(ChronosTimeGui timeGui) {

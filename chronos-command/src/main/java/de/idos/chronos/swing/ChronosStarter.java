@@ -14,15 +14,15 @@ import de.idos.chronos.common.ChronosPresenter;
 public class ChronosStarter {
 
     public static void main(String[] args) {
-        //        if (args.length < 1) {
-        //            System.out.println("Ich brauche die millis seit 1970, z.B. " + new Date().getTime());
-        //        }
-        new ChronosStarter().start(args);
+        DateTime dateTimeInUTC = new DateTime();
+        if (args.length > 0) {
+            dateTimeInUTC = new DateTime(Long.parseLong(args[0]), DateTimeZone.UTC);
+        }
+        new ChronosStarter().start(dateTimeInUTC);
     }
 
-    private void start(String[] args) {
-        DateTime dateTime = new DateTime(); //Long.parseLong(args[0]), DateTimeZone.UTC);
-        final DateTime startTime = dateTime.withZone(DateTimeZone.forID("Europe/Athens"));
+    private void start(DateTime dateTimeInUTC) {
+        final DateTime startTime = dateTimeInUTC.withZone(DateTimeZone.forID("Europe/Athens"));
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 

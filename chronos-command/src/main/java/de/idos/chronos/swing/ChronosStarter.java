@@ -21,14 +21,12 @@ public class ChronosStarter {
         new ChronosStarter().start(dateTimeInUTC);
     }
 
-    private void start(DateTime dateTimeInUTC) {
-        final DateTime startTime = dateTimeInUTC.withZone(DateTimeZone.forID("Europe/Athens"));
-
+    private void start(final DateTime dateTimeInUTC) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
                 ChronosSwingGui chronosGui = new ChronosSwingGui();
-                ChronosModel model = new ChronosModel(startTime);
+                ChronosModel model = new ChronosModel(dateTimeInUTC);
                 GuiBuilder guiBuilder = new SwingGuiBuilder();
 
                 new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic();

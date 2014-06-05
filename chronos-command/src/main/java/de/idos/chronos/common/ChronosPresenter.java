@@ -19,7 +19,8 @@ public class ChronosPresenter {
         this.timeModel = timeModel;
 
         chronosGui.addTimeGui(guiBuilder.buildTimeGui("", new ChronosTimeFormatter(DateTimeZone.forID("Europe/Athens"), patternHourMinute)));
-        chronosGui.addTimeGui(guiBuilder.buildTimeGui("Frankfurt", new ChronosTimeFormatter(DateTimeZone.forID("Europe/Athens"), patternHourMinuteSecond)));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui("London", new ChronosTimeFormatter(DateTimeZone.forID("Europe/London"), patternHourMinuteSecond)));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui("Frankfurt", new ChronosTimeFormatter(DateTimeZone.forID("Europe/Berlin"), patternHourMinuteSecond)));
         chronosGui.addTimeGui(guiBuilder.buildTimeGui("Tokyo", new ChronosTimeFormatter(DateTimeZone.forID("Asia/Tokyo"), patternHourMinuteSecond)));
         chronosGui.addTimeGui(guiBuilder.buildTimeGui("New York", new ChronosTimeFormatter(DateTimeZone.forID("America/New_York"), patternHourMinuteSecond)));
 

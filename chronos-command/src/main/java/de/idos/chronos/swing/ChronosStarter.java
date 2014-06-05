@@ -37,7 +37,7 @@ public class ChronosStarter {
     }
 
     private void showGUI(JComponent display) {
-        JFrame frame = new JFrame("Chronos Time");
+        JFrame frame = new JFrame("Chronos Swing Time");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(display);
         frame.pack();

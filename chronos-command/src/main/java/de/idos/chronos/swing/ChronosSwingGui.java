@@ -7,39 +7,31 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import de.idos.chronos.common.ChronosGui;
+import de.idos.chronos.common.ChronosTimeGui;
 
 public class ChronosSwingGui implements ChronosGui {
 
     private final JPanel panel = new JPanel();
 
-    private final List<TimePanel> panels = new ArrayList<TimePanel>();
-
-    public ChronosSwingGui() {
-        panels.add(new TimePanel("", DateTimeZone.forID("Europe/Athens")));
-        panels.add(new TimePanel("Frankfurt", DateTimeZone.forID("Europe/Berlin")));
-        panels.add(new TimePanel("Tokyo", DateTimeZone.forID("Asia/Tokyo")));
-        panels.add(new TimePanel("New York", DateTimeZone.forID("America/New_York")));
-        panels.add(new TimePanel("New York", DateTimeZone.forID("America/New_York")));
-
-        for (TimePanel singlePanel : panels) {
-            panel.add(singlePanel.getComponent());
-        }
-    }
+    private final List<ChronosTimeGui> panels = new ArrayList<ChronosTimeGui>();
 
     public JComponent getComponent() {
+        for (ChronosTimeGui singleGui : panels) {
+            panel.add(singleGui.getComponent());
+        }
         return panel;
     }
 
-    /* (non-Javadoc)
-     * @see de.idos.chronos.swing.ChronosGui#setTime(org.joda.time.DateTime)
-     */
     public void setTime(DateTime time) {
-        for (TimePanel panel : panels) {
+        for (ChronosTimeGui panel : panels) {
             panel.setTime(time);
         }
+    }
+
+    public void addTimeGui(ChronosTimeGui timeGui) {
+        panels.add(timeGui);
     }
 
 }

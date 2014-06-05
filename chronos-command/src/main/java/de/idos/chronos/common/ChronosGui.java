@@ -1,9 +1,8 @@
 package de.idos.chronos.common;
 
-import org.joda.time.DateTime;
 
-public interface ChronosGui {
+public interface ChronosGui extends ChronosTimeGui {
 
-    void setTime(DateTime time);
+    void addTimeGui(ChronosTimeGui timeGui);
 
 }

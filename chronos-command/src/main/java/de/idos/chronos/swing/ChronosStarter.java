@@ -9,6 +9,7 @@ import org.joda.time.DateTimeZone;
 
 import de.idos.chronos.common.ChronosModel;
 import de.idos.chronos.common.ChronosPresenter;
+import de.idos.chronos.common.GuiBuilder;
 
 
 public class ChronosStarter {
@@ -29,8 +30,9 @@ public class ChronosStarter {
             public void run() {
                 ChronosSwingGui chronosGui = new ChronosSwingGui();
                 ChronosModel model = new ChronosModel(startTime);
+                GuiBuilder guiBuilder = new SwingGuiBuilder();
 
-                new ChronosPresenter(chronosGui, model).refreshPeriodic();
+                new ChronosPresenter(chronosGui, model, guiBuilder).refreshPeriodic();
 
                 showGUI(chronosGui.getComponent());
             }

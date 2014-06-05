@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-public class TimePanel {
+import de.idos.chronos.common.ChronosTimeGui;
+
+public class TimePanel implements ChronosTimeGui {
 
     private final JLabel separator1 = new JLabel(":");
     private final JLabel separator2 = new JLabel(":");

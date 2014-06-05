@@ -4,22 +4,28 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 public class ChronosPresenter {
 
-    private final ChronosModel model;
+    private final ChronosModel timeModel;
 
-    public ChronosPresenter(ChronosGui chronosGui, ChronosModel model) {
-        this.model = model;
+    public ChronosPresenter(ChronosGui chronosGui, ChronosModel timeModel, GuiBuilder guiBuilder) {
+        this.timeModel = timeModel;
 
-        TimeChangeListener listener = new ModelToViewExchangeListener(model, chronosGui);
-        model.addDataChangeListener(listener);
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("", DateTimeZone.forID("Europe/Athens"))));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("Frankfurt", DateTimeZone.forID("Europe/Berlin"))));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("Tokyo", DateTimeZone.forID("Asia/Tokyo"))));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("New York", DateTimeZone.forID("America/New_York"))));
+
+        TimeChangeListener listener = new ModelToViewExchangeListener(timeModel, chronosGui);
+        timeModel.addDataChangeListener(listener);
     }
 
     public void refreshPeriodic() {
         Timer timer = new Timer();
 
-        final DateTime startDateTime = model.getDateTime();
+        final DateTime startDateTime = timeModel.getDateTime();
 
         TimerTask timerTask = new TimerTask() {
 
@@ -28,7 +34,7 @@ public class ChronosPresenter {
             @Override
             public void run() {
                 nextDateTime = nextDateTime.plusSeconds(1);
-                model.setDateTime(nextDateTime);
+                timeModel.setDateTime(nextDateTime);
             }
 
         };

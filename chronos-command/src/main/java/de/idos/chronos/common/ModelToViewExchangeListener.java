@@ -1,7 +1,5 @@
 package de.idos.chronos.common;
 
-import de.idos.chronos.swing.ChronosGui;
-
 public class ModelToViewExchangeListener implements TimeChangeListener {
 
     private final ChronosModel model;

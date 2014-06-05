@@ -27,7 +27,7 @@ public class ChronosStarter {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
-                ChronosGui chronosGui = new ChronosGui();
+                ChronosSwingGui chronosGui = new ChronosSwingGui();
                 ChronosModel model = new ChronosModel(startTime);
 
                 new ChronosPresenter(chronosGui, model).refreshPeridic();

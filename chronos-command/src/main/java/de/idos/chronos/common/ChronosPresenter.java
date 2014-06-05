@@ -5,8 +5,6 @@ import java.util.TimerTask;
 
 import org.joda.time.DateTime;
 
-import de.idos.chronos.swing.ChronosGui;
-
 public class ChronosPresenter {
 
     private final ChronosModel model;

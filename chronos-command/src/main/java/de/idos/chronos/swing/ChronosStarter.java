@@ -30,7 +30,7 @@ public class ChronosStarter {
                 ChronosSwingGui chronosGui = new ChronosSwingGui();
                 ChronosModel model = new ChronosModel(startTime);
 
-                new ChronosPresenter(chronosGui, model).refreshPeridic();
+                new ChronosPresenter(chronosGui, model).refreshPeriodic();
 
                 showGUI(chronosGui.getComponent());
             }

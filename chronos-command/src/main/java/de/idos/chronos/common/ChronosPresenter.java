@@ -16,7 +16,7 @@ public class ChronosPresenter {
         model.addDataChangeListener(listener);
     }
 
-    public void refreshPeridic() {
+    public void refreshPeriodic() {
         Timer timer = new Timer();
 
         final DateTime startDateTime = model.getDateTime();

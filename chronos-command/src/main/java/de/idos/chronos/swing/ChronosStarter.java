@@ -41,7 +41,7 @@ public class ChronosStarter {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(display);
         frame.pack();
-        frame.setSize(300, 200);
+        frame.setSize(300, 250);
         frame.setVisible(true);
     }
 

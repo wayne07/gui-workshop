@@ -17,7 +17,7 @@ import javafx.scene.layout.Pane;
 
 public class ProgressGui {
 
-    private static final Integer MAX = 20;
+    private static final Integer MAX = 50;
 
     private final GridPane pane = new GridPane();
     private UpdateProgressTask iteratingTask;
@@ -37,7 +37,7 @@ public class ProgressGui {
 
         iteratingTask = new UpdateProgressTask(MAX, progressIndicator);
 
-        listenToButtonPress(button, iteratingTask, progressIndicator);
+        listenToButtonPress(button, iteratingTask, progressIndicator, slider);
 
         slider.valueProperty().addListener(new ChangeListener<Number>() {
 
@@ -54,14 +54,39 @@ public class ProgressGui {
         return pane;
     }
 
-    private void listenToButtonPress(final Button button, final UpdateProgressTask task, final ProgressIndicator progressIndicator) {
+    private void listenToButtonPress(final Button button, final UpdateProgressTask task, final ProgressIndicator progressIndicator, final Slider slider) {
+        final int totalIterations = 50;
         button.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
                 progressIndicator.setProgress(0);
-                //                button.setDisable(true);
-                task.run();
 
+                new Thread() {
+
+                    @Override
+                    public void run() {
+                        //Do some stuff in another thread
+                        Platform.runLater(new Runnable() {
+
+                            public void run() {
+                                int iterations = 0;
+                                for (iterations = 0; iterations < totalIterations; iterations++) {
+                                    System.out.println("Iteration " + iterations);
+                                    slider.setValue(iterations);
+                                    //                                    progressIndicator.setProgress(iterations / totalIterations);
+
+                                    try {
+                                        Thread.sleep(200);
+                                    } catch (InterruptedException interrupted) {
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }.start();
+                //                button.setDisable(true);
+                //                task.run();
                 //                button.setDisable(false);
             }
         });

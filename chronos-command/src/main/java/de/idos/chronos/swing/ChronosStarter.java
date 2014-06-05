@@ -11,7 +11,6 @@ import de.idos.chronos.common.ChronosModel;
 import de.idos.chronos.common.ChronosPresenter;
 import de.idos.chronos.common.GuiBuilder;
 
-
 public class ChronosStarter {
 
     public static void main(String[] args) {
@@ -40,7 +39,7 @@ public class ChronosStarter {
     }
 
     private void showGUI(JComponent display) {
-        JFrame frame = new JFrame("application name");
+        JFrame frame = new JFrame("Chronos Time");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(display);
         frame.pack();

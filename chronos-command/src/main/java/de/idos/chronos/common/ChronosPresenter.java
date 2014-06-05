@@ -1,13 +1,13 @@
 package de.idos.chronos.common;
 
+import java.util.Date;
 import java.util.Timer;
-import java.util.TimerTask;
 
-import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public class ChronosPresenter {
 
+    private final long delayInMillis = 1000l;
     private final ChronosModel timeModel;
 
     public ChronosPresenter(ChronosGui chronosGui, ChronosModel timeModel, GuiBuilder guiBuilder) {
@@ -23,23 +23,8 @@ public class ChronosPresenter {
     }
 
     public void refreshPeriodic() {
-        Timer timer = new Timer();
-
-        final DateTime startDateTime = timeModel.getDateTime();
-
-        TimerTask timerTask = new TimerTask() {
-
-            DateTime nextDateTime = startDateTime;
-
-            @Override
-            public void run() {
-                nextDateTime = nextDateTime.plusSeconds(1);
-                timeModel.setDateTime(nextDateTime);
-            }
-
-        };
-        long delayInMillis = 1000l;
-        timer.schedule(timerTask, startDateTime.toDate(), delayInMillis);
+        Date startTime = timeModel.getDateTime().toDate();
+        new Timer().schedule(new ChronosTimerTask(timeModel), startTime, delayInMillis);
     }
 
 }

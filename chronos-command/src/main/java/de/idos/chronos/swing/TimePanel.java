@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import de.idos.chronos.common.ChronosTimeGui;
 import de.idos.chronos.common.format.ChronosFormatter;
@@ -17,7 +16,7 @@ public class TimePanel implements ChronosTimeGui {
 
     private final ChronosFormatter formatter;
 
-    public TimePanel(String name, DateTimeZone timeZone, ChronosFormatter chronosFormatter) {
+    public TimePanel(String name, ChronosFormatter chronosFormatter) {
         this.formatter = chronosFormatter;
         createPanelWithTime(name);
     }

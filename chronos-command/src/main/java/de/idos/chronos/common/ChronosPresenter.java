@@ -18,10 +18,10 @@ public class ChronosPresenter {
     public ChronosPresenter(ChronosGui chronosGui, ChronosModel timeModel, GuiBuilder guiBuilder) {
         this.timeModel = timeModel;
 
-        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("", DateTimeZone.forID("Europe/Athens")), new ChronosTimeFormatter(DateTimeZone.forID("Europe/Athens"), patternHourMinute)));
-        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("Frankfurt", DateTimeZone.forID("Europe/Berlin")), new ChronosTimeFormatter(DateTimeZone.forID("Europe/Athens"), patternHourMinuteSecond)));
-        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("Tokyo", DateTimeZone.forID("Asia/Tokyo")), new ChronosTimeFormatter(DateTimeZone.forID("Asia/Tokyo"), patternHourMinuteSecond)));
-        chronosGui.addTimeGui(guiBuilder.buildTimeGui(new CityModel("New York", DateTimeZone.forID("America/New_York")), new ChronosTimeFormatter(DateTimeZone.forID("America/New_York"), patternHourMinuteSecond)));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui("", new ChronosTimeFormatter(DateTimeZone.forID("Europe/Athens"), patternHourMinute)));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui("Frankfurt", new ChronosTimeFormatter(DateTimeZone.forID("Europe/Athens"), patternHourMinuteSecond)));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui("Tokyo", new ChronosTimeFormatter(DateTimeZone.forID("Asia/Tokyo"), patternHourMinuteSecond)));
+        chronosGui.addTimeGui(guiBuilder.buildTimeGui("New York", new ChronosTimeFormatter(DateTimeZone.forID("America/New_York"), patternHourMinuteSecond)));
 
         TimeChangeListener listener = new ModelToViewExchangeListener(timeModel, chronosGui);
         timeModel.addDataChangeListener(listener);

@@ -4,6 +4,6 @@ import de.idos.chronos.common.format.ChronosFormatter;
 
 public interface GuiBuilder {
 
-    ChronosTimeGui buildTimeGui(CityModel cityModel, ChronosFormatter chronosFormatter);
+    ChronosTimeGui buildTimeGui(String guiName, ChronosFormatter chronosFormatter);
 
 }

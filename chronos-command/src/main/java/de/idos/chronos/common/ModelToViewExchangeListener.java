@@ -1,11 +1,8 @@
 package de.idos.chronos.common;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import de.idos.chronos.swing.ChronosGui;
 
-public class ModelToViewExchangeListener implements ChangeListener {
+public class ModelToViewExchangeListener implements TimeChangeListener {
 
     private final ChronosModel model;
     private final ChronosGui view;
@@ -15,7 +12,7 @@ public class ModelToViewExchangeListener implements ChangeListener {
         this.view = chronosGui;
     }
 
-    public void stateChanged(ChangeEvent e) {
+    public void timeChanged() {
         view.setTime(model.getDateTime());
     }
 

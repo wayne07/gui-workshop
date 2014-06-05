@@ -3,14 +3,11 @@ package de.idos.chronos.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import org.joda.time.DateTime;
 
 public class ChronosModel {
 
-    private final List<ChangeListener> listeners = new ArrayList<ChangeListener>();
+    private final List<TimeChangeListener> listeners = new ArrayList<TimeChangeListener>();
 
     private DateTime dateTime;
 
@@ -27,13 +24,13 @@ public class ChronosModel {
         informListeners();
     }
 
-    public void addDataChangeListener(ChangeListener listener) {
+    public void addDataChangeListener(TimeChangeListener listener) {
         listeners.add(listener);
     }
 
     private void informListeners() {
-        for (ChangeListener listener : listeners) {
-            listener.stateChanged(new ChangeEvent("date has changed"));
+        for (TimeChangeListener listener : listeners) {
+            listener.timeChanged();
         }
 
     }

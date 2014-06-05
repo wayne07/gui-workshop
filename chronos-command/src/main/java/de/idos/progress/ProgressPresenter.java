@@ -2,13 +2,15 @@ package de.idos.progress;
 
 public class ProgressPresenter {
 
+    private final ProgressGui progressGui;
+    private final ProgressModel model;
+
     public ProgressPresenter(ProgressGui progressGui, ProgressModel model) {
-        // TODO Auto-generated constructor stub
+        this.progressGui = progressGui;
+        this.model = model;
     }
 
     public void present() {
-        // TODO Auto-generated method stub
-
     }
 
 }
